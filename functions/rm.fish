@@ -21,7 +21,11 @@ function rm
     end
 
     function delete
-        asktry $argv --one-file-system
+        for file in $argv[3..]
+            set -a files \'$file\'
+        end
+        asktry $argv[1] $argv[2] --one-file-system "$files"
+        # asktry $argv --one-file-system
         return $status
     end
 
@@ -45,7 +49,7 @@ function rm
     end
 
     if ! set -q folder
-        delete $command "$argv_opts" "$argv"
+        delete $command "$argv_opts" $argv
         return $status
     end
 

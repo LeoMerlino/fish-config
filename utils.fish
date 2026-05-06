@@ -36,5 +36,5 @@ function asktry
     log "Command => `$BY$argv$RESET`"
     ask "Run?" || return 1
     eval "$argv" || { elog "Command failed! Exiting." && return 1 }
-    return 0
+    return $status
 end
