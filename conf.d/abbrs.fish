@@ -65,7 +65,7 @@ abbr -a -- fixpass 'faillock --user leo --reset'
 abbr -a -- gpupowersave 'echo low | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
 abbr -a -- gpupower 'echo auto | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
 test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh -C'
-abbr -a -- df 'dysk -c+uuid'
+abbr -a -- df 'dysk -c+label,uuid'
 alias klogout="qdbus6 org.kde.LogoutPrompt /LogoutPrompt org.kde.LogoutPrompt.promptLogout"
 alias klogout-force="qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
 alias kshutdown="qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptShutDown"
