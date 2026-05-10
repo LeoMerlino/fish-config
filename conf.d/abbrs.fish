@@ -28,6 +28,7 @@ alias tree='eza --icons always --classify -T'
 alias of='fd -H . . --type file | fzf'
 alias fdd='fd -H . . --type directory | fzf'
 alias fdf='kitten choose-files --mode file'
+alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
 
 ## Command Substitutions
 abbr -a -- nano 'micro'
@@ -59,8 +60,8 @@ abbr -a -- grm 'git rm --cached'
 
 
 ## System Utilities
-abbr -a -- dmount 'udisksctl mount -b'
-abbr -a -- dumount 'udisksctl unmount -b'
+abbr -a -- dmount 'systemd-mount'
+abbr -a -- dumount 'systemd-umount'
 abbr -a -- restartghostty 'killall ghostty'
 abbr -a -- nameof 'ps -o comm -p'
 abbr -a -- fixpass 'faillock --user leo --reset'
@@ -91,9 +92,7 @@ function run
 end
 
 ## Alternatives!
-abbr -a -- unzip "alternatives ouch unzip"
-abbr -a -- tar "alternatives ouch tar"
-abbr -a -- du "alternatives cull du"
+alias host='alternatives systemd-resolve host'
 
 ## Package Management
 
