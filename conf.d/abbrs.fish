@@ -131,7 +131,7 @@ if string match -q $distro arch
 else if string match -q $distro debian
     abbr -a -- i 'sudo apt install'
     function it
-        sudo apt install "$argv" && sudo apt-mark "$argv"
+        sudo apt install "$argv" && sudo apt-mark auto "$argv"
     end
     abbr -a -- r 'sudo apt purge --autoremove'
     abbr -a -- u 'sudo apt update && sudo apt upgrade && flatpak update'
