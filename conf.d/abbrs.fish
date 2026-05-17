@@ -42,6 +42,7 @@ abbr -a -- somo 'sonar'
 abbr -a -- rg 'rga-fzf'
 abbr -a -- dua 'cull'
 abbr -a -- lsblk 'lsblk -o NAME,SIZE,LABEL,MOUNTPOINTS'
+abbr host 'systemd-resolve'
 
 ## git substitutions
 abbr -a -- g 'git'
@@ -91,8 +92,6 @@ function run
     eval $argv
 end
 
-## Alternatives!
-alias host='alternatives systemd-resolve host'
 
 ## Package Management
 
@@ -159,10 +158,10 @@ else if string match -q $distro gentoo
     abbr -a -- ib 'sudo emerge -ag --binpkg-respect-use=y --noreplace'
     abbr -a -- r 'echo "Use rd to deselect them, then rr to depclean."'
     abbr -a -- rd 'sudo emerge --deselect'
-    abbr -a -- rr 'sudo emerge -ca'
+    abbr -a -- rr 'sudo EMERGE_DEFAULT_OPTS='' emerge -ca'
     abbr -a -- s 'eix'
     abbr -a -- u 'read -P "You should sync (um) first" && sudo emerge --ask --verbose --update --deep --changed-use --with-bdeps=y @world && sudo emerge -ca'
-    alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update'
+    alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all'
     abbr -a -- um 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom" && sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
 end
 end
