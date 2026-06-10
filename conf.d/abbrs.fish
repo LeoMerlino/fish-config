@@ -117,7 +117,7 @@ else if test (which apk 2>/dev/null)
 else if test (which emerge 2>/dev/null)
     set distro "gentoo"
     function fish_command_not_found
-        asktry e-file "$argv[1]" || asktry eix "$argv[1]" || asktry equery b "$argv[1]"
+        asktry "e-file $argv[1] || eix $argv[1]"
     end
 end
 
