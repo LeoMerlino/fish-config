@@ -19,7 +19,8 @@ abbr -a -- spotify-update "flatpak mask --remove com.spotify.Client && flatpak u
 abbr -a -- mkdir 'mkdir -p'
 
 abbr -a -- cat 'bat'
-# Them expanding is annoying
+
+# Alternatives
 
 alias ls='eza --icons always --classify'
 alias ks='eza --icons always --classify'
@@ -69,7 +70,7 @@ abbr -a -- nameof 'ps -o comm -p'
 abbr -a -- fixpass 'faillock --user leo --reset'
 abbr -a -- gpupowersave 'echo low | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
 abbr -a -- gpupower 'echo auto | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
-test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh -C'
+test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh'
 abbr -a -- df 'dysk -c+label,uuid'
 abbr reloadmenu 'update-desktop-database ~/.local/share/applications'
 alias klogout="qdbus6 org.kde.LogoutPrompt /LogoutPrompt org.kde.LogoutPrompt.promptLogout"
@@ -164,7 +165,7 @@ else if string match -q $distro gentoo
     abbr -a -- rr 'sudo EMERGE_DEFAULT_OPTS='' emerge -ca'
     abbr -a -- s 'eix'
     abbr -a -- u  'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --verbose --update --deep --changed-use --with-bdeps=y @world && echo "Remember to depclean!"'
-    abbr -a -- ub 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo FEATURES=\'-binpkg-request-signature\' emerge --ask --verbose --update --deep --changed-use --with-bdeps=y -k @world  && echo "Remember to depclean!"'
+    abbr -a -- ub 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --verbose --update --deep --changed-use --with-bdeps=y -gk @world  && echo "Remember to depclean!"'
     abbr -a -- um 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom" && sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
     alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all'
 end

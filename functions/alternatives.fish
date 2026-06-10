@@ -13,7 +13,7 @@ function alternatives
     echo $RESET
     switch (string lower "$search")
         case y
-            commandline --replace "$argv[1]"
+            commandline --replace "$argv[1] $argv[3..-1]"
         case n
             command $argv[2..-1]
             set -g stubborn very     
