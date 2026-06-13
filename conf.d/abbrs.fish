@@ -20,7 +20,9 @@ abbr -a -- mkdir 'mkdir -p'
 
 abbr -a -- cat 'bat'
 
-# Alternatives
+# Alternatives   | og cmd | new cmd
+alias ps='alternatives procs ps'
+
 
 alias ls='eza --icons always --classify'
 alias ks='eza --icons always --classify'
