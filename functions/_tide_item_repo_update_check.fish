@@ -30,6 +30,6 @@ function _tide_item_repo_update_check
         if test $unstaged -gt 0
             set msg "$BW$msg$BY $unstaged$BC unstaged$RESET"
         end
-        echo " $msg"
+        echo -n " $msg"
     end
 end
