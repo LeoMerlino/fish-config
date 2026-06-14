@@ -160,13 +160,14 @@ else if string match -q $distro alpine
     abbr -a -- upgradethenshutdown "sudo su -c 'flatpak update -y && apk upgrade && shutdown now'"
     abbr -a -- s 'apk search'
 else if string match -q $distro gentoo
-    abbr -a -- i 'sudo emerge -a --noreplace -gk --binpkg-respect-use=y '
+    abbr -a -- i 'sudo emerge -a --noreplace -g --binpkg-respect-use=y '
     abbr -a -- r 'echo "Use rd to deselect them, then rr to depclean."'
     abbr -a -- rd 'sudo emerge --deselect'
     abbr -a -- rr 'sudo EMERGE_DEFAULT_OPTS='' emerge -ca'
     abbr -a -- s 'eix'
-    abbr -a -- u 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --update --deep --changed-use --with-bdeps=y -gk --binpkg-respect-use=y @world  && echo "Remember to depclean!"'
-    abbr -a -- um 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom" && sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
+    abbr -a -- u 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --update --deep --changed-use -g --binpkg-respect-use=y @world  && echo "Remember to depclean!"'
+    abbr -a -- um 'sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
+    abbr -- ratemirrors 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom"'
     alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all'
 end
 end
