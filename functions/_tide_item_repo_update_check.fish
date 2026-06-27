@@ -20,6 +20,9 @@ function _tide_item_repo_update_check
         set name (basename (git -C "$repos[$i]" remote get-url "$remote"))
         set msg "$BY $name$RESET:"
         if test $behind = 0 -a $ahead = 0 -a $unstaged = 0
+            if test "$i" = (count $repos)
+                printf '\e[3D\e[3X'
+            end
             continue
         end
         if test $behind -gt 0
