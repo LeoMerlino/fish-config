@@ -32,7 +32,7 @@ function _tide_item_repo_update_check
             set msg "$BW$msg$BW $ahead$RESET$BG a$RESET"
         end
         if test $unstaged -gt 0
-            set msg "$BW$msg$BW $unstaged$BC u$RESET"
+            set msg "$BW$msg$BW $unstaged$BB u$RESET"
         end
         echo -n "$msg"
         if test "$i" != (count $repos)
