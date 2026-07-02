@@ -23,7 +23,6 @@ abbr -a -- cat 'bat'
 # Alternatives   | og cmd | new cmd
 alias ps='alternatives procs ps'
 
-
 alias ls='eza --icons always --classify'
 alias ks='eza --icons always --classify'
 alias sl='eza --icons always --classify'

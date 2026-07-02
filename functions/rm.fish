@@ -5,7 +5,7 @@ function rm
     else
         set command /bin/rm
     end
-    
+
     if test (which fd) >/dev/null 2>&1
         set fd (which fd)
     else
@@ -31,7 +31,7 @@ function rm
     for f in $argv
         # Test if its not a file
         if not test -f "$f"
-            set folder true
+            set -a folders "$f"
         end
         if not test -e "$f"
             elog "$f doesn't exist"
@@ -47,17 +47,18 @@ function rm
         set command 'sudo /bin/rm'
     end
 
-    if ! set -q folder
+    if ! set -q folders
         delete $command "$argv_opts" $argv
         return $status
     end
 
-    for f in $argv
+    for f in $folders
         # Check if the argument is a mount point using findmnt
         if test -z $f # If array element is empty
             continue
         end
-        set mounts (cut -d' ' -f2 /proc/mounts | grep -F "$f")
+        set total_files (math $total_files + ($fd -H . "$f" | wc -l))
+        set mounts (cut -d' ' -f2 /proc/mounts | grep -P "^\Q$f\E")
         if test $status -eq 0
             wlog "Folder contains the following mounts: "
             findmnt / | head -1
@@ -66,8 +67,8 @@ function rm
             end
         end
     end
-    set count ($fd -H . $argv | wc -l)
+    set count (math $total_files + (math (count $argv) - (count $folders)))
     echo
     wlog "About to delete $count file(s)!"
-    delete "$command" "$argv_opts" "$argv"
+    delete "$command" "$argv_opts" $argv
 end
