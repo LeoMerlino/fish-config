@@ -45,6 +45,7 @@ abbr -a -- somo 'sonar'
 abbr -a -- rg 'rga-fzf'
 abbr -a -- dua 'cull'
 abbr -a -- lsblk 'lsblk -o NAME,SIZE,LABEL,MOUNTPOINTS'
+abbr wget 'aria2c -s 4 -Z'
 abbr host 'systemd-resolve'
 
 ## git substitutions
@@ -74,7 +75,7 @@ abbr -a -- gpupower 'echo auto | sudo tee /sys/class/drm/card1/device/power_dpm_
 test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh'
 abbr -a -- df 'dysk -c+label,uuid'
 abbr reloadmenu 'update-desktop-database ~/.local/share/applications'
-abbr own 'sudo chown -R leo:leo'
+abbr own 'sudo chown -R $USER:'
 alias klogout="qdbus6 org.kde.LogoutPrompt /LogoutPrompt org.kde.LogoutPrompt.promptLogout"
 alias klogout-force="qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
 alias kshutdown="qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptShutDown"
