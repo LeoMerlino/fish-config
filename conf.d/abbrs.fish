@@ -1,24 +1,24 @@
 if status is-interactive
-abbr -a -- fixzlib 'i zlib lib32-zlib'
+abbr fixzlib 'i zlib lib32-zlib'
 
 ## Wacom Stuff
-abbr -a -- wacom 'xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus" Button 2 pan && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus"  "PanScrollThreshold" 200'
-abbr -a -- enablewacom 'systemctl --user stop opentabletdriver.service && sudo modprobe -i wacom && sleep 1 && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus" Button 2 pan && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus"  "PanScrollThreshold" 200'
-abbr -a -- disablewacom 'sudo modprobe -r wacom && systemctl --user start opentabletdriver.service'
+abbr wacom 'xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus" Button 2 pan && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus"  "PanScrollThreshold" 200'
+abbr enablewacom 'systemctl --user stop opentabletdriver.service && sudo modprobe -i wacom && sleep 1 && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus" Button 2 pan && xsetwacom --set "Wacom Bamboo 2FG 4x5 Pen stylus"  "PanScrollThreshold" 200'
+abbr disablewacom 'sudo modprobe -r wacom && systemctl --user start opentabletdriver.service'
 
 ## Flatpak
-abbr -a -- fr 'flatpak remove'
-abbr -a -- fs 'flatpak search'
-abbr -a -- frd 'flatpak remove --delete-data'
-abbr -a -- fi 'flatpak install'
-abbr -a -- fu 'flatpak update'
-abbr -a -- fl 'flatpak list'
-abbr -a -- spotify-update "flatpak mask --remove com.spotify.Client && flatpak update com.spotify.Client -y && flatpak mask com.spotify.Client"
+abbr fr 'flatpak remove'
+abbr fs 'flatpak search'
+abbr frd 'flatpak remove --delete-data'
+abbr fi 'flatpak install'
+abbr fu 'flatpak update'
+abbr fl 'flatpak list'
+abbr spotify-update "flatpak mask --remove com.spotify.Client && flatpak update com.spotify.Client -y && flatpak mask com.spotify.Client"
 
 ## File and Directory Management
-abbr -a -- mkdir 'mkdir -p'
+abbr mkdir 'mkdir -p'
 
-abbr -a -- cat 'bat'
+abbr cat 'bat'
 
 # Alternatives   | og cmd | new cmd
 alias ps='alternatives procs ps'
@@ -34,46 +34,51 @@ alias fdf='kitten choose-files --mode file'
 alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
 
 ## Command Substitutions
-abbr -a -- nano 'micro'
-abbr -a -- rlk '/bin/readlink -f'
-abbr -a -- pip 'uv pip'
-abbr -a -- pip3 'uv pip'
-abbr -a -- less 'less -R'
-abbr -a -- grc 'grc --colour on'
-abbr -a -- blkid 'grc blkid'
-abbr -a -- somo 'sonar'
-abbr -a -- rg 'rga-fzf'
-abbr -a -- dua 'cull'
-abbr -a -- lsblk 'lsblk -o NAME,SIZE,LABEL,MOUNTPOINTS'
+abbr nano 'micro'
+abbr rlk '/bin/readlink -f'
+abbr pip 'uv pip'
+abbr pip3 'uv pip'
+abbr less 'less -R'
+abbr grc 'grc --colour on'
+abbr blkid 'grc blkid'
+abbr somo 'sonar'
+abbr rg 'rga-fzf'
+abbr dua 'cull'
+abbr lsblk 'lsblk -o NAME,SIZE,LABEL,MOUNTPOINTS'
 abbr wget 'aria2c -s 4 -Z'
 abbr host 'systemd-resolve'
 
 ## git substitutions
-abbr -a -- g 'git'
-abbr -a -- gpl 'git pull'
-abbr -a -- gps 'git push'
-abbr -a -- gf 'git fetch'
-abbr -a -- gl 'git log'
-abbr -a -- ga 'git add'
-abbr -a -- gs 'git status'
-abbr -a -- gd 'git diff'
-abbr -a -- gb 'git branch'
-abbr -a -- gsw 'git switch'
-abbr -a -- gc 'git clone -j$(nproc) --depth 1'
+abbr g 'git'
+abbr gpl 'git pull'
+abbr gps 'git push'
+abbr gf 'git fetch'
+abbr grs 'git reset'
+abbr gsh 'git show'
+abbr grh 'git reset --hard'
+abbr gl 'git log'
+abbr ga 'git add'
+abbr gs 'git status'
+abbr gd 'git diff'
+abbr gb 'git branch'
+abbr gsw 'git switch'
+abbr gc 'git clone -j$(nproc) --depth 1'
+abbr gch 'git checkout'
+abbr gam 'git commit --amend --no-edit -a'
 abbr gcm --set-cursor=! 'git commit -am "!"'
-abbr -a -- grm 'git rm --cached'
+abbr grm 'git rm --cached'
 
 
 ## System Utilities
-abbr -a -- dmount 'systemd-mount'
-abbr -a -- dumount 'systemd-umount'
-abbr -a -- restartghostty 'killall ghostty'
-abbr -a -- nameof 'ps -o comm -p'
-abbr -a -- fixpass 'faillock --user leo --reset'
-abbr -a -- gpupowersave 'echo low | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
-abbr -a -- gpupower 'echo auto | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
+abbr dmount 'systemd-mount'
+abbr dumount 'systemd-umount'
+abbr restartghostty 'killall ghostty'
+abbr nameof 'ps -o comm -p'
+abbr fixpass 'faillock --user leo --reset'
+abbr gpupowersave 'echo low | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
+abbr gpupower 'echo auto | sudo tee /sys/class/drm/card1/device/power_dpm_force_performance_level'
 test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh'
-abbr -a -- df 'dysk -c+label,uuid'
+abbr df 'dysk -c+label,uuid'
 abbr reloadmenu 'update-desktop-database ~/.local/share/applications'
 abbr own 'sudo chown -R $USER:'
 alias klogout="qdbus6 org.kde.LogoutPrompt /LogoutPrompt org.kde.LogoutPrompt.promptLogout"
@@ -87,13 +92,13 @@ alias khibernate="qdbus6 org.kde.Solid.PowerManagement /org/freedesktop/PowerMan
 
 
 ## Miscellaneous
-abbr -a -- aliases 'micro ~/.config/fish/conf.d/abbrs.fish'
-abbr -a -- sctl '/usr/bin/systemctl'
-abbr -a -- fixkvm 'sudo rmmod kvm_amd && sudo rmmod kvm'
-abbr -a -- getclass "qdbus6 org.kde.KWin /KWin org.kde.KWin.queryWindowInfo | grep -E 'resourceName|resourceClass'"
-abbr -a -- unlock 'faillock --user leo --reset'
-abbr -a -- penv "if test -d .venv; else; uv venv -p 3.14 ; end && source .venv/bin/activate.fish"
-abbr -a -- resource "source ~/.config/fish/conf.d/config.fish"
+abbr aliases 'micro ~/.config/fish/conf.d/abbrs.fish'
+abbr sctl '/usr/bin/systemctl'
+abbr fixkvm 'sudo rmmod kvm_amd && sudo rmmod kvm'
+abbr getclass "qdbus6 org.kde.KWin /KWin org.kde.KWin.queryWindowInfo | grep -E 'resourceName|resourceClass'"
+abbr unlock 'faillock --user leo --reset'
+abbr penv "if test -d .venv; else; uv venv -p 3.14 ; end && source .venv/bin/activate.fish"
+abbr resource "source ~/.config/fish/conf.d/config.fish"
 function run
     chmod +x $argv[1]
     eval $argv
@@ -126,49 +131,49 @@ else if test (which emerge 2>/dev/null)
 end
 
 if string match -q $distro arch
-    abbr -a -- i 'paru -Sy --needed'
-    abbr -a -- u 'upgrade'
-    abbr -a -- um 'paru -Sy'
-    abbr -a -- r 'paru -Rncs'
-    abbr -a -- ss 'pacman -Q | grep'
-    abbr -a -- pacman 'paru'
-    abbr -a -- ratemirrors 'sudo cachyos-rate-mirrors'
-    abbr -a -- ratemirrorsbad 'rate-mirrors --entry-country UK --max-jumps 1 --country-neighbors-per-country 1 --country-test-mirrors-per-country 6 --disable-comments-in-file --protocol https arch --max-delay 5200 | sudo tee /etc/pacman.d/mirrorlist && um'
+    abbr i 'paru -Sy --needed'
+    abbr u 'upgrade'
+    abbr um 'paru -Sy'
+    abbr r 'paru -Rncs'
+    abbr ss 'pacman -Q | grep'
+    abbr pacman 'paru'
+    abbr ratemirrors 'sudo cachyos-rate-mirrors'
+    abbr ratemirrorsbad 'rate-mirrors --entry-country UK --max-jumps 1 --country-neighbors-per-country 1 --country-test-mirrors-per-country 6 --disable-comments-in-file --protocol https arch --max-delay 5200 | sudo tee /etc/pacman.d/mirrorlist && um'
 else if string match -q $distro debian
-    abbr -a -- i 'sudo apt install'
+    abbr i 'sudo apt install'
     function it
         sudo apt install $argv && sudo apt-mark auto $argv
     end
-    abbr -a -- r 'sudo apt purge --autoremove'
-    abbr -a -- u 'sudo apt update && sudo apt upgrade && flatpak update'
-    abbr -a -- um 'sudo apt update'
-    abbr -a -- upgradethenshutdown "sudo su -c 'apt update && apt upgrade -y && shutdown now'"
-    abbr -a -- s 'apt search'
-    abbr -a -- ss 'apt list --installed | grep'
-    abbr -a -- cat 'batcat'
+    abbr r 'sudo apt purge --autoremove'
+    abbr u 'sudo apt update && sudo apt upgrade && flatpak update'
+    abbr um 'sudo apt update'
+    abbr upgradethenshutdown "sudo su -c 'apt update && apt upgrade -y && shutdown now'"
+    abbr s 'apt search'
+    abbr ss 'apt list --installed | grep'
+    abbr cat 'batcat'
     alias fd='fdfind'
 else if string match -q $distro fedora
-    abbr -a -- i 'sudo dnf install'
-    abbr -a -- r 'sudo dnf remove'
-    abbr -a -- u 'sudo dnf upgrade --refresh'
-    abbr -a -- upgradethenshutdown "sudo su -c 'flatpak update -y && dnf upgrade --refresh && shutdown now'"
-    abbr -a -- s 'dnf search'
-    abbr -a -- ss 'dnf list --installed | grep'
+    abbr i 'sudo dnf install'
+    abbr r 'sudo dnf remove'
+    abbr u 'sudo dnf upgrade --refresh'
+    abbr upgradethenshutdown "sudo su -c 'flatpak update -y && dnf upgrade --refresh && shutdown now'"
+    abbr s 'dnf search'
+    abbr ss 'dnf list --installed | grep'
 else if string match -q $distro alpine
-    abbr -a -- i 'sudo apk add'
-    abbr -a -- r 'sudo apk del'
-    abbr -a -- u 'sudo apk upgrade'
-    abbr -a -- upgradethenshutdown "sudo su -c 'flatpak update -y && apk upgrade && shutdown now'"
-    abbr -a -- s 'apk search'
+    abbr i 'sudo apk add'
+    abbr r 'sudo apk del'
+    abbr u 'sudo apk upgrade'
+    abbr upgradethenshutdown "sudo su -c 'flatpak update -y && apk upgrade && shutdown now'"
+    abbr s 'apk search'
 else if string match -q $distro gentoo
-    abbr -a -- i 'sudo emerge -a --noreplace -g --binpkg-respect-use=y '
-    abbr -a -- r 'echo "Use rd to deselect them, then rr to depclean."'
-    abbr -a -- rd 'sudo emerge --deselect'
-    abbr -a -- rr 'sudo EMERGE_DEFAULT_OPTS='' emerge -ca'
-    abbr -a -- s 'eix'
-    abbr -a -- u 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --update --deep --changed-use -g --binpkg-respect-use=y @world  && echo "Remember to depclean!"'
-    abbr -a -- um 'sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
-    abbr -- ratemirrors 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom"'
+    abbr i 'sudo emerge -a --noreplace -g --binpkg-respect-use=y '
+    abbr r 'echo "Use rd to deselect them, then rr to depclean."'
+    abbr rd 'sudo emerge --deselect'
+    abbr rr 'sudo EMERGE_DEFAULT_OPTS='' emerge -ca'
+    abbr s 'eix'
+    abbr u 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --update --deep --changed-use -g --binpkg-respect-use=y @world  && echo "Remember to depclean!"'
+    abbr um 'sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
+    abbr ratemirrors 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom"'
     alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all'
 end
 end
