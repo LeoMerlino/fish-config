@@ -2,16 +2,19 @@ function _tide_item_repo_update_check
     if test -f ~/.config/repos.conf
         set repos (cat ~/.config/repos.conf)
     else
-        echo "repo update check configuration$BR not found$RESET, add repos to$BY ~/.config/repos.conf"
+        wlog "Missing repo config: ~/.config/repos.conf"
+        return 0
+    end
+    function update_repo
+        if test (cat /tmp/last_fetch) != (date +%H)
+            git -C "$argv" fetch >/dev/null 2>&1 && echo (date +%H) > /tmp/last_fetch
+        end
     end
     for i in (seq (count $repos))
         if ! test -f /tmp/last_fetch
             echo (date +%H) > /tmp/last_fetch
         end
-        if test (cat /tmp/last_fetch) != (date +%H)
-            git -C "$repos[$i]" fetch >/dev/null 2>&1 &
-            echo (date +%H) > /tmp/last_fetch
-        end
+        update_repo "$repos[$i]" &
         set branch (git -C "$repos[$i]" symbolic-ref --quiet --short HEAD)
         set remote (git -C "$repos[$i]" remote)
         set behind (git -C "$repos[$i]" rev-list --count HEAD.."$remote"/"$branch")
