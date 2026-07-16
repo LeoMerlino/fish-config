@@ -28,8 +28,8 @@ alias ks='eza --icons always --classify'
 alias sl='eza --icons always --classify'
 alias la='eza --icons always --classify -lA'
 alias tree='eza --icons always --classify -T'
-alias of='fd -H . . --type file | fzf --query'
-alias fdd='fd -H . . --type directory | fzf --query'
+alias of='fd -H . . --type file | fzf'
+alias fdd='fd -H . . --type directory | fzf'
 alias fdf='kitten choose-files --mode file'
 alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
 
@@ -144,7 +144,7 @@ else if string match -q $distro debian
     function it
         sudo apt install $argv && sudo apt-mark auto $argv
     end
-    abbr r 'sudo apt purge --autoremove'
+    abbr r 'sudo apt autopurge'
     abbr u 'sudo apt update && sudo apt upgrade && flatpak update'
     abbr um 'sudo apt update'
     abbr upgradethenshutdown "sudo su -c 'apt update && apt upgrade -y && shutdown now'"
@@ -174,6 +174,6 @@ else if string match -q $distro gentoo
     abbr u 'read -P "You should sync (um) first also dont forget to snapshot!!!" && sudo emerge --ask --update --deep --changed-use -g --binpkg-respect-use=y @world  && echo "Remember to depclean!"'
     abbr um 'sudo EMERGE_DEFAULT_OPTS="" emerge --sync --quiet'
     abbr ratemirrors 'sudo mirrorselect -s3 -b10 -D -c "United Kingdom"'
-    alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all'
+    alias uextra='kitty go-global-update & kitty cargo install-update -a & kitty flatpak update -y & kitty distrobox upgrade --all & wait'
 end
 end
