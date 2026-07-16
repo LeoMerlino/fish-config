@@ -51,3 +51,24 @@ function asktry
     eval "$argv" || { elog "Command failed! Exiting." && return 1 }
     return $status
 end
+
+function anim
+    printf '\e[s' # Save cursor position 
+    printf '\e[?25l' # Hide cursor
+    printf '\e[2m' # Faint/dim text
+    printf "$argv" # Print full string
+    printf '\e[u' # Restore position
+    for char in (string split '' "$argv")
+        printf '\e[1m' # Enable bold
+        printf "$char" # Print char
+        sleep 0.03
+        printf '\e[2D' # go back 2 columns
+        printf '\e[22m' # Reset weight
+        printf '\e[2m' # Faint/dim text
+        printf "$last_char" # Print last char
+        printf '\e[C' # Move forward
+        printf '\e[22m' # Reset weight
+        set last_char "$char" # Assign current char to last char
+    end
+    printf '\e[?25h' # Show cursor
+end
