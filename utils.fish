@@ -16,18 +16,18 @@ function slog
     echo "[INFO]$BG $argv"$RESET
 end
 
-function pick
-    echo 'Pick from the following items:' 1>&2
-    for item in (seq (count $argv))
-        echo "$item. $argv[$item]" 1>&2
-    end
-    while :
-        read -P 'Choice: ' choice 1>&2 || return 1
-        { test $choice -gt 0 2>/dev/null; and test $choice -lt (math (count $argv)+1) 2>/dev/null; } || { echo 'Invalid choice' 1>&2; continue; }
-        echo "$choice"
-        return 0
-    end
-end
+# function pick
+#     echo 'Pick from the following items:' 1>&2
+#     for item in (seq (count $argv))
+#         echo "$item. $argv[$item]" 1>&2
+#     end
+#     while :
+#         read -P 'Choice: ' choice 1>&2 || return 1
+#         { test $choice -gt 0 2>/dev/null; and test $choice -lt (math (count $argv)+1) 2>/dev/null; } || { echo 'Invalid choice' 1>&2; continue; }
+#         echo "$choice"
+#         return 0
+#     end
+# end
 
 function try
     log "Running command => `$BY$argv$RESET`"

@@ -32,6 +32,8 @@ alias of='fd -H . . --type file | fzf'
 alias fdd='fd -H . . --type directory | fzf'
 alias fdf='kitten choose-files --mode file'
 alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
+alias searchenv='commandline --replace (env | fzf)'
+
 
 ## Command Substitutions
 abbr nano 'micro'
