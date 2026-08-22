@@ -59,3 +59,4 @@ source /home/$USER/.config/fish/utils.fish
 set -gx EDITOR /usr/bin/micro
 zoxide init fish --cmd cd | source
 fzf --fish | source
+echo Rmemver to do the funny call thing where theyu forgot therir hnoe but didnt

@@ -1,5 +1,5 @@
 function snapshot
-    set name (date +%m-%d-%Y)
+    set name "snap-$(date +%m-%d-%Y)"
     if test -d /.snapshots/"$name"
         for i in (seq 1 50)
             test -d /.snapshots/"$name:$i" || { set name "$name:$i"; break; }
@@ -8,8 +8,8 @@ function snapshot
     log "Creating snapshot..."
     asktry "sudo btrfs subvolume snapshot -r / /.snapshots/$name" || return 1
     slog "Successfully created snapshot!"
-    if test (count /.snapshots/*) -gt 2
-        set snapshots (/bin/ls /.snapshots/)
+    if test (count /.snapshots/snap-*) -gt 2
+        set snapshots (/bin/ls /.snapshots/snap-*)
         set oldest_date (date -d (string replace -ra ':(\d+)$' '' -- $snapshots[1] | string replace -a '-' '/') +%s)
         set oldest_name $snapshots[1]
 
