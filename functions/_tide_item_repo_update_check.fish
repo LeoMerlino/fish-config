@@ -6,14 +6,14 @@ function _tide_item_repo_update_check
         return 0
     end
     function update_repo
-        if test (cat /tmp/last_fetch) != (date +%H)
-            git -C "$argv" fetch >/dev/null 2>&1 && echo (date +%H) > /tmp/last_fetch
+        if ! test -f /tmp/last_fetch
+            touch /tmp/last_fetch
+        end
+        if test "$(cat /tmp/last_fetch)" != (date +%H)
+            git -C "$argv" fetch >/dev/null 2>&1
         end
     end
     for i in (seq (count $repos))
-        if ! test -f /tmp/last_fetch
-            echo (date +%H) > /tmp/last_fetch
-        end
         update_repo "$repos[$i]" &
         set branch (git -C "$repos[$i]" symbolic-ref --quiet --short HEAD)
         set remote (git -C "$repos[$i]" remote)
@@ -42,4 +42,5 @@ function _tide_item_repo_update_check
             echo -n "$BGR ──"
         end
     end
+    echo (date +%H) > /tmp/last_fetch
 end
