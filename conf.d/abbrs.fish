@@ -20,9 +20,9 @@ abbr mkdir 'mkdir -p'
 
 abbr cat 'bat'
 
-# Alternatives   | og cmd | new cmd
+# Alternatives   | new cmd | og cmd
 alias ps='alternatives procs ps'
-alias netstat='alternatives netstat lsoff'
+alias netstat='alternatives lsoff netstat'
 alias ss='alternatives ss lsoff'
 
 alias ls='eza --icons always --classify auto'
@@ -149,7 +149,7 @@ else if string match -q $distro debian
         sudo apt install $argv && sudo apt-mark auto $argv
     end
     abbr r 'sudo apt autopurge'
-    abbr u 'sudo apt update && sudo apt upgrade && flatpak update'
+    abbr u 'sudo apt update && sudo apt upgrade && sudo apt autopurge && flatpak update'
     abbr um 'sudo apt update'
     abbr upgradethenshutdown "sudo su -c 'apt update && apt upgrade -y && shutdown now'"
     abbr s 'apt search'
