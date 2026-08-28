@@ -33,13 +33,13 @@ alias tree='eza --icons always --classify auto -T'
 alias of='commandline --replace "ls $(fd -H . . --type file | fzf)"'
 alias fdd='commandline --replace "ls $(fd -H . . --type directory | fzf)"'
 alias fdf='kitten choose-files --mode file'
-alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
+alias searchpath='echo "Just press ctrl + v" && sleep 1 && commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
 alias searchenv='commandline --replace (env | fzf)'
 
 
 ## Command Substitutions
 abbr nano 'micro'
-abbr rlk '/bin/readlink -f'
+abbr --set-cursor=! rlk 'readlink -f ! | kitten clipboard '
 abbr pip 'uv pip'
 abbr pip3 'uv pip'
 abbr less 'less -R'
@@ -85,6 +85,7 @@ test $TERM = xterm-kitty && alias ssh='TERM=xterm-256color kitten ssh'
 abbr df 'dysk -c+label,uuid'
 abbr reloadmenu 'update-desktop-database ~/.local/share/applications'
 abbr own 'sudo chown -R $USER:'
+abbr eject 'udisksctl power-off -b'
 alias klogout="qdbus6 org.kde.LogoutPrompt /LogoutPrompt org.kde.LogoutPrompt.promptLogout"
 alias klogout-force="qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout"
 alias kshutdown="qdbus6 org.kde.LogoutPrompt /LogoutPrompt promptShutDown"
@@ -97,7 +98,7 @@ alias khibernate="qdbus6 org.kde.Solid.PowerManagement /org/freedesktop/PowerMan
 
 ## Miscellaneous
 abbr aliases 'micro ~/.config/fish/conf.d/abbrs.fish'
-abbr sctl '/usr/bin/systemctl'
+abbr sctl 'systemctl'
 abbr fixkvm 'sudo rmmod kvm_amd && sudo rmmod kvm'
 abbr getclass "qdbus6 org.kde.KWin /KWin org.kde.KWin.queryWindowInfo | grep -E 'resourceName|resourceClass'"
 abbr unlock 'faillock --user leo --reset'
