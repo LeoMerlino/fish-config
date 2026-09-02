@@ -1,7 +1,6 @@
 function sshwait
-    read -P "What ip? " addr
-    while ! bash -c "cat <<<'' >/dev/tcp/$addr/22" 2>/dev/null
-        sleep 1s
+    while ! timeout 2s ssh $argv exit >/dev/null 2>&1
+        :
     end
-    /bin/ssh $argv
+    ssh $argv
 end

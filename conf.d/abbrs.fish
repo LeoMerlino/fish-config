@@ -33,8 +33,8 @@ alias tree='eza --icons always --classify auto -T'
 alias of='commandline --replace "ls $(fd -H . . --type file | fzf)"'
 alias fdd='commandline --replace "ls $(fd -H . . --type directory | fzf)"'
 alias fdf='kitten choose-files --mode file'
-alias searchpath='echo "Just press ctrl + v" && sleep 1 && commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
-alias searchenv='commandline --replace (env | fzf)'
+alias searchpath='commandline --replace (/bin/find $PATH 2>/dev/null | fzf)'
+alias searchenv='echo "Just press ctrl + v" && sleep 1 && commandline --replace (env | fzf)'
 
 
 ## Command Substitutions
