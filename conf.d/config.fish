@@ -53,10 +53,11 @@ complete -e tar
 complete -e unzip
 complete -e du
 
-source /home/$USER/.config/fish/colours.fish
-source /home/$USER/.config/fish/utils.fish
 set -gx EDITOR /usr/bin/micro
 zoxide init fish --cmd cd | source
 fzf --fish | source
 echo Rmemver to do the funny call thing where theyu forgot therir hnoe but didnt
 end
+# Needs to be after the end otherwise doesnt get sourced in the prompt
+source /home/$USER/.config/fish/colours.fish
+source /home/$USER/.config/fish/utils.fish
