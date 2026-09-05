@@ -8,7 +8,7 @@ function _tide_item_mam
     end
     ! test -f /tmp/mam && update
     test (cat /tmp/mam | wc -l) -eq 1 && update && return 1
-    test (date +%H) -ne (tail -1 /tmp/mam) && update
+    test (date +%H) -ne (tail -1 /tmp/mam) 2>/dev/null && update || update
     set ratio (query '(.ratio * 100) / 100')
     set points (query '.seedbonus')
     set cheese (query '.wedges')
