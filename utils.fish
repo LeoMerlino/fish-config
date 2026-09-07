@@ -1,5 +1,3 @@
-source /home/$USER/.config/fish/colours.fish
-
 function log
     echo $BW"[INFO] $argv"$RESET
 end
