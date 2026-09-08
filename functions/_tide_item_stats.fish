@@ -8,6 +8,6 @@ function _tide_item_stats
     echo -n $BW  $BC"up "{$h}h {$m}m
     set load_avg (string split ' ' -- (cat /proc/loadavg))[1]
     set load (math "$load_avg / $(nproc) * 100")
-    set colour "$(/opt/scripts/num_to_ansi "$load")"
+    test -f /opt/scripts/num_to_ansi && set colour "$(/opt/scripts/num_to_ansi "$load")"
     echo -en "$BW  $colour$load%"
 end
