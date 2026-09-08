@@ -1,11 +1,13 @@
 function _tide_item_stats
     echo -n $BW"  $BY$(history |wc -l)"
-    uptime | awk '{print $3}' | tr ':' '\n' | tr -d , | read -L h m
+    bash -c 'read -r uptime_secs _ < /proc/uptime
+    uptime_secs=${uptime_secs%.*}
+    h=$((uptime_secs / 3600))
+    m=$(((uptime_secs % 3600) / 60))
+    echo "$h $m"' | read h m
     echo -n $BW  $BC"up "{$h}h {$m}m
-    uptime -r >/dev/null 2>&1 && {
-        set load_avg (string split ' ' -- (uptime -r))[4]
-        set load (math "$load_avg / $(nproc) * 100")
-        set colour "$(/opt/scripts/num_to_ansi "$load")"
-        echo -en "$BW  $colour$load%"
-    }
+    set load_avg (string split ' ' -- (cat /proc/loadavg))[1]
+    set load (math "$load_avg / $(nproc) * 100")
+    set colour "$(/opt/scripts/num_to_ansi "$load")"
+    echo -en "$BW  $colour$load%"
 end
