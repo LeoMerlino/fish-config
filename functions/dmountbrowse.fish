@@ -9,3 +9,4 @@ function dmountbrowse
     systemd-umount "$path"
     return $status
 end
+
