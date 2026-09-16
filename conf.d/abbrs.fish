@@ -24,6 +24,7 @@ abbr cat 'bat'
 alias ps='alternatives procs ps'
 alias netstat='alternatives lsoff netstat'
 alias ss='alternatives ss lsoff'
+alias jq='alternatives jq jnv'
 
 alias ls='eza --icons always --classify auto'
 alias ks='eza --icons always --classify auto'
