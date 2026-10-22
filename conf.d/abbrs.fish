@@ -23,8 +23,8 @@ abbr cat 'bat'
 # Alternatives   | new cmd | og cmd
 alias ps='alternatives procs ps'
 alias netstat='alternatives lsoff netstat'
-alias ss='alternatives ss lsoff'
-alias jq='alternatives jq jnv'
+alias ss='alternatives lsoff ss'
+alias jq='alternatives jnv jq'
 
 alias ls='eza --icons always --classify auto'
 alias ks='eza --icons always --classify auto'
