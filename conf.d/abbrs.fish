@@ -23,8 +23,8 @@ abbr cat 'bat'
 # Alternatives   | new cmd | og cmd
 alias ps='alternatives procs ps'
 alias netstat='alternatives lsoff netstat'
-alias ss='alternatives ss lsoff'
-alias jq='alternatives jq jnv'
+alias ss='alternatives lsoff ss'
+alias jq='alternatives jnv jq'
 
 alias ls='eza --icons always --classify auto'
 alias ks='eza --icons always --classify auto'
@@ -105,6 +105,7 @@ abbr getclass "qdbus6 org.kde.KWin /KWin org.kde.KWin.queryWindowInfo | grep -E 
 abbr unlock 'faillock --user leo --reset'
 abbr penv "if test -d .venv; else; uv venv -p 3.14 ; end && source .venv/bin/activate.fish"
 abbr resource "source ~/.config/fish/conf.d/config.fish"
+alias fastfetch='fastfetch --config examples/17.jsonc | uvx terminaltexteffects --frame-rate 60 wipe --final-gradient-steps 10'
 function run
     chmod +x $argv[1]
     eval $argv
