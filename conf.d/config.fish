@@ -56,6 +56,7 @@ complete -e du
 set -gx EDITOR /usr/bin/micro
 zoxide init fish --cmd cd | source
 fzf --fish | source
+bell_on_failure
 echo Rmemver to do the funny call thing where theyu forgot therir hnoe but didnt
 end
 # Needs to be after the end otherwise doesnt get sourced in the prompt
